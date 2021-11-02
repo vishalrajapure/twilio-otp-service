@@ -35,6 +35,7 @@ public class TwilioOtpService {
             otpMap.put(passwordResetRequestDto.getUsername(), otp);
             passwordResponseDto = new PasswordResponseDto(otpMessage, OtpStatus.DELIVERED);
         } catch (Exception exception) {
+            exception.printStackTrace();
             passwordResponseDto = new PasswordResponseDto("otp does not sent successfully", OtpStatus.FAILED);
         }
         return Mono.just(passwordResponseDto);
